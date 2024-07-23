@@ -18,7 +18,7 @@ function App() {
       </div>
       <div className="Bar">
         <Router>
-          <Menubar /> 메뉴
+          <Menubar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
