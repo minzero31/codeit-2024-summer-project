@@ -1,0 +1,36 @@
+.menubar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .menubar-logo a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  .menubar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menubar-menu li {
+    margin-left: 20px;
+  }
+  
+  .menubar-menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .menubar-menu li a:hover {
+    text-decoration: underline;
+  }
+  
