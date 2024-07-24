@@ -1,0 +1,61 @@
+div {
+}
+
+h1 {
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    //column-count: 4;
+    height: 550px;
+    background-color: pink;
+}
+
+.para0 {
+    width: 150px;
+}
+
+.para1, .para2, .para3 {
+    width: 33%;
+}
+
+.para1 {
+}
+.para2 {
+}
+.para3 {
+}
+
+section {
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    width: 350px;
+    margin: 0px auto; /*para 내에서 중앙정렬*/
+}
+
+.block1 {
+    background-color: #EEF3EA;
+    height:95%;
+}
+
+#usrImg {
+    height: 20px;
+    width: auto;
+}
+
+.block2 {
+    background-color: red;
+    height: 47%;
+}
+.block3 {
+    background-color: purple;
+    height: 47%;
+}
+.block4 {
+    background-color: blue;
+    height: 95%;
+}
