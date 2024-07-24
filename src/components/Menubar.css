@@ -11,10 +11,8 @@
   }
   
   .menubar-logo a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: #101010;
     background-color: red;
+    margin-left: 5px;
   }
   
   .menubar-menu {
@@ -22,27 +20,37 @@
     list-style: none;
     display: center;
     text-align: center;
-    margin: 45px 0px;
-    padding: 5px 3px; /*세로가로*/
+    margin: 15px 0px 45px;
+    padding: 5px 2px; /*세로가로*/
     border-radius: 40px;
+  }
+
+  img {
+    width: 70%; /* 컨테이너의 너비에 맞게 조정 */
+    height: auto;
+    fliter: contrast(300%);
   }
   
   
   .menubar-menu li {
     margin: 30px 13px;
+    height: 45px;
+    padding-top: 7px;
   }
   
   .menubar-menu li a {
-    text-decoration: none;
-    color: #528A28;
-    font-size: 1rem;
-    margin: 4px 0px;
+    //color: #528A28;
+    //font-size: 1rem;
+    margin: 0px 0px;
+    padding: 4px 0px;
   }
   
-  .menubar-menu li a:hover {
-    text-decoration: underline;
-    font-size: 1.2rem;
-    background-color: #528A28;
-    color: #E4F6D6;
+  .menubar-menu li:hover {
+    background-color: #C3D6B5;
+    border-radius: 50%;
+    //filter: invert(100%);
+    //color: #E4F6D6;
+    //text-decoration: underline;
+    //font-size: 1.2rem;
   }
   
