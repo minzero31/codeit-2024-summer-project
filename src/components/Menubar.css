@@ -1,37 +1,48 @@
 .menubar {
-    display: flex;
-    justify-content: space-between;
+    //display: flex;
+    //justify-content: space-between;
     align-items: flex-start;
-    padding: 10px 20px;
-    background-color: #528A28;
+    padding: 20px 5px;
     color: #101010;
+    background-color: grey;
+    width: 80px; /* 메뉴바의 너비 */
+    position: fixed; /* 화면의 좌측에 고정 */
+    margin-left: 10px;
   }
   
   .menubar-logo a {
     text-decoration: none;
     font-size: 1.5rem;
     color: #101010;
+    background-color: red;
   }
   
   .menubar-menu {
+    background-color: #E4F6D6;
     list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
+    display: center;
+    text-align: center;
+    margin: 45px 0px;
+    padding: 5px 3px; /*세로가로*/
+    border-radius: 40px;
   }
   
+  
   .menubar-menu li {
-    margin-left: 20px;
+    margin: 30px 13px;
   }
   
   .menubar-menu li a {
     text-decoration: none;
-    color: #CAE3B7;
-    font-size: 1.25rem;
+    color: #528A28;
+    font-size: 1rem;
+    margin: 4px 0px;
   }
   
   .menubar-menu li a:hover {
     text-decoration: underline;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    background-color: #528A28;
+    color: #E4F6D6;
   }
   

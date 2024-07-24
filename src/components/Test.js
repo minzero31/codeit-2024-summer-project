@@ -4,7 +4,7 @@ const Test = () => {
   return (
     <div>
       <h1>Test</h1>
-      <p>진단 기록 및 약 복용 기록</p>
+      <p>ADHD 및 우울증 자가진단</p>
     </div>
   );
 };

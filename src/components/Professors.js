@@ -4,7 +4,7 @@ const Professors = () => {
   return (
     <div>
       <h1>Professors</h1>
-      <p>진단 기록 및 약 복용 기록</p>
+      <p>분야 별 유명한 교수님 리스트</p>
     </div>
   );
 };

@@ -16,7 +16,7 @@ function App() {
       <div className="App">
         <header className="topLogo">
           <p>
-            로고
+            Healthcare Inc.(로고)
           </p>
         </header>
       </div>

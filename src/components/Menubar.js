@@ -6,7 +6,7 @@ const Menubar = () => {
   return (
     <nav className="menubar">
       <div className="menubar-logo">
-        <Link to="/">Healthcare Inc.</Link>
+        <Link to="/">ㅁ</Link>
       </div>
       <ul className="menubar-menu">
         <li><Link to="/">Home</Link></li>
@@ -15,8 +15,6 @@ const Menubar = () => {
         <li><Link to="/chat">Chat</Link></li>
         <li><Link to="/professors">Professors</Link></li>
         <li><Link to="/test">Test</Link></li>
-        {/*<li><Link to="/services">Services</Link></li>
-        <li><Link to="/contact">Contact</Link></li>*/}
       </ul>
     </nav>
   );

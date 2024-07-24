@@ -4,7 +4,7 @@ const Find = () => {
   return (
     <div>
       <h1>Find</h1>
-      <p>진단 기록 및 약 복용 기록</p>
+      <p>가까운 병원 찾기</p>
     </div>
   );
 };
