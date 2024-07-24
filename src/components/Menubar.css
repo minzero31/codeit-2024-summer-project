@@ -26,11 +26,12 @@
   
   .menubar-menu li a {
     text-decoration: none;
-    color: #101010;
-    font-size: 1rem;
+    color: #CAE3B7;
+    font-size: 1.25rem;
   }
   
   .menubar-menu li a:hover {
     text-decoration: underline;
+    font-size: 1.3rem;
   }
   

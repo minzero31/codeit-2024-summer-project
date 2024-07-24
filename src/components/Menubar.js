@@ -10,7 +10,11 @@ const Menubar = () => {
       </div>
       <ul className="menubar-menu">
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
+        <li><Link to="/schedule">Schedule</Link></li>
+        <li><Link to="/find">Find</Link></li>
+        <li><Link to="/chat">Chat</Link></li>
+        <li><Link to="/professors">Professors</Link></li>
+        <li><Link to="/test">Test</Link></li>
         {/*<li><Link to="/services">Services</Link></li>
         <li><Link to="/contact">Contact</Link></li>*/}
       </ul>
