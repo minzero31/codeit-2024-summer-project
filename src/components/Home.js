@@ -6,7 +6,6 @@ const Home = () => {
     <>
         <div>
           <h1>00님, 어서오세요.</h1>
-          <p>메인 페이지</p>
         </div>
         <main>
             <div className='para0'>
@@ -14,19 +13,19 @@ const Home = () => {
             </div>
             <div className='para1'>
                 <section className='block1'>
-                    <p><img id='usrImg' src="images/home2_icon.png" alt="Home" /></p>
+                    <p><img id='usrImg' src="images/home2_icon.png" alt="Home" />회원정보</p>
                 </section>
             </div>
             <div className='para2'>
                 <section className='block2'>
-                    블럭 2
+                    <p>news</p>
                 </section>
                 <section className='block3'>
-                    블럭 3
+                    <p id='b3txt'>병원 찾기<img id='hosPic' src='images/hospital_icon.png' alt='pic of hospital icon'/></p>
                 </section>
             </div>
             <div className='para3'>
-                <section className='block4'>블럭 4</section>
+                <section className='block4'><p>block4</p></section>
             </div>
         </main>
     </>
