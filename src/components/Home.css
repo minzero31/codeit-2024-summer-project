@@ -59,18 +59,26 @@ section:hover {
 }
 
 .block3 {
-    background: radial-gradient(#6E7170, #8F9391);
+    background: radial-gradient(#6E7270, #AEB4B2);
     height: 46%;
 }
 #b3txt {
     padding: 20px 0px 0px;
     font-size: 40px;
+    font-weight: 600;
+    color: #303332;
+    font-family: cursive;
 }
 #hosPic {
     margin-top: 5px;
 }
 
 .block4 {
-    background-color: blue;
+    background-color: green;
     height: 95%;
+}
+h2 {
+    font-size: 30px;
+    text-align: left;
+    padding: 25px 25px 35px;
 }
