@@ -12,6 +12,7 @@ main {
     height: 640px;
 }
 
+
 .para0 {
     width: 150px;
 }
@@ -27,7 +28,6 @@ main {
     //background-color: black;
     padding-top: 7px;
 }
-
 .para3 {
 }
 
@@ -43,6 +43,8 @@ section:hover {
 
 }
 
+
+
 .block1 {
     background-color: #F2F9F6;
     height:95%;
@@ -52,11 +54,15 @@ section:hover {
     width: auto;
 }
 
+
+
 .block2 {
     background-color: purple;
     height: 46%;
     margin-bottom: 20px;
 }
+
+
 
 .block3 {
     background: radial-gradient(#6E7270, #AEB4B2);
@@ -73,12 +79,62 @@ section:hover {
     margin-top: 5px;
 }
 
+
+
 .block4 {
-    background-color: green;
+    background-color: white;
     height: 95%;
+    border: 0.5px solid #E1E1E1;
 }
 h2 {
     font-size: 30px;
     text-align: left;
-    padding: 25px 25px 35px;
+    padding: 25px 25px 5px;
+    margin-top: 0px;
+}
+fieldset {
+    height: 320px;
+    font-size:25px;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    border: none;
+}
+
+#option {
+    margin: 0px 0px;
+    width: 90%;
+    padding: 0px 5px 30px;
+    text-align:left;
+    //background-color: purple;
+}
+
+input[type='checkbox'] {
+    width: 17px;
+    height: 17px;
+    accent-color: lightgreen;
+    margin-right: 15px;
+}
+
+#addMed {
+    font-size: 25px;
+    color: grey;
+    width: 345px;
+    text-align: left;
+    padding: 15px 30px 0px;
+    border: none;
+    background-color: transparent;
+}
+#addMed:hover { 
+    color: black;
+}
+#saveMed {
+    height: 45px;
+    width: 160px;
+    border-radius: 15px;
+    border-width: 0px;
+    border-color: grey;
+    background-color: #70C3A7;
+    font-size: 20px;
+    margin: 15px 0px 5px;
 }
