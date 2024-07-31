@@ -93,3 +93,9 @@
     margin: 15px 0px 5px;
     position: relative
 }
+#schsavebtn:hover {
+    background-color: #6FB9A7;
+}
+#schsavebtn:active {
+    color: white;
+}

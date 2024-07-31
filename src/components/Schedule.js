@@ -21,9 +21,19 @@ const Schedule = () => {
           <section className='blck2'>
             <h2 id='schh2'>진료 기록</h2>
             <fieldset className='schsec1'>
-              <label>
-                병원명
-              </label>
+              <table border={1}>
+                <tr>
+                  <td>병원명</td>
+                  <td>숙숙병원</td>
+                </tr>
+                <tr>
+                  <td>진료날짜</td>
+                  <td>24.04.06</td>
+                </tr>
+                <tr>
+                  <td>등등...</td>
+                </tr>
+              </table>
             </fieldset>
             <fieldset className='schsec2'>
               <label></label>

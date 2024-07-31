@@ -154,3 +154,9 @@ input[type='checkbox'] {
     font-weight: 700;
     margin: 15px 0px 5px;
 }
+#saveMed:hover {
+    background-color: #6FB9A7;
+}
+#saveMed:active {
+    color: white;
+}
