@@ -14,7 +14,7 @@
 
 
 .para0 {
-    width: 150px;
+    width: 120px;
 }
 
 .para1, .para2, .para3 {
@@ -145,7 +145,7 @@ input[type='checkbox'] {
 }
 #saveMed {
     height: 45px;
-    width: 160px;
+    width: 210px;
     border-radius: 15px;
     border-width: 0.1px;
     border-color: grey;
