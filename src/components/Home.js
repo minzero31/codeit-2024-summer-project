@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <>
         <div>
-          <h1>00님, 어서오세요.</h1>
+          <h1 id='homeh1'>00님, 어서오세요.</h1>
         </div>
-        <main>
+        <main className='homemain'>
             <div className='para0'>
                 <p> </p>
             </div>
@@ -20,7 +20,7 @@ const Home = () => {
             </div>
             <div className='para2'>
                 <section className='block2'>
-                    <p>news</p>
+                    <h3 id='block2h'>Health<br/>Care<br/>News +</h3>
                 </section>
                 <section className='block3'>
                     <p id='b3txt'>병원 찾기<img id='hosPic' src='images/hospital_icon.png' alt='pic of hospital icon'/></p>
@@ -28,8 +28,8 @@ const Home = () => {
             </div>
             <div className='para3'>
                 <section className='block4'>
-                    <h2>오늘 어떤 약💊을<br/>복용하셨습니까?</h2>
-                    <fieldset>
+                    <h2 id='homeh2'>오늘 어떤 약💊을<br/>복용하셨습니까?</h2>
+                    <fieldset className='homefs'>
                         <div id='option'>
                             <input type='checkbox' id='med1' name='복용약 종류' value='1번 약(입력되는 값?)' />
                             <label for='med1'>약1</label>

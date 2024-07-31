@@ -4,7 +4,6 @@
     align-items: flex-start;
     padding: 20px 5px;
     color: #101010;
-    background-color: grey;
     width: 80px; /* 메뉴바의 너비 */
     position: fixed; /* 화면의 좌측에 고정 */
     margin-left: 10px;
@@ -15,7 +14,8 @@
   }
   
   .menubar-menu {
-    background-color: #E4F6D6;
+    //background-color: #E4F6D6;
+    background-image: url('greentopurple.jpg');
     list-style: none;
     display: center;
     text-align: center;
@@ -45,7 +45,7 @@
   }
   
   .menubar-menu li:hover {
-    background-color: #C3D6B5;
+    background-color: #DFC1F1;
     border-radius: 50%;
     //filter: invert(100%);
     //color: #E4F6D6;
