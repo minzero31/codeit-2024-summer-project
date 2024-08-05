@@ -1,5 +1,5 @@
 import React from 'react';
-import './Schedule.css'
+import './Schedule.css';
 
 const Schedule = () => {
   return (
@@ -21,12 +21,29 @@ const Schedule = () => {
           <section className='blck2'>
             <h2 id='schh2'>진료 기록</h2>
             <fieldset className='schsec1'>
-              <label>
-                병원명
-              </label>
+              <table border={1}>
+                <tr>
+                  <td>병원명</td>
+                  <td>숙숙병원</td>
+                </tr>
+                <tr>
+                  <td>진료날짜</td>
+                  <td>24.04.06</td>
+                </tr>
+                <tr>
+                  <td>등등...</td>
+                </tr>
+              </table>
             </fieldset>
             <fieldset className='schsec2'>
-              <label></label>
+              <h3 id='schsec2h3'>복용 약 추가</h3>
+              <div className='chooseMed'>
+                <button id='m222'>소염제</button>
+                <button id='m222'>알레르기 약</button>
+                <button id='m222'>오메가 3</button>
+                <button id='m222'>루테인</button>
+                <button id='m222'>비타민 D</button>
+              </div>
             </fieldset>
             <button id="schsavebtn">저장하기</button>
 

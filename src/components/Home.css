@@ -14,7 +14,7 @@
 
 
 .para0 {
-    width: 150px;
+    width: 120px;
 }
 
 .para1, .para2, .para3 {
@@ -37,6 +37,7 @@
     width: 350px;
     margin: 0px auto; /*para 내에서 중앙정렬*/
     transition: all 0.3s ease-out;
+    border: 0.5px solid #E1E1E1;
 }
 section:hover {
     transform: translateY(-4px);
@@ -80,7 +81,8 @@ section:hover {
     height: 46%;
 }
 #b3txt {
-    padding: 20px 0px 0px;
+    margin: 15px auto;
+    padding: 0px 0px 0px;
     font-size: 40px;
     font-weight: 700;
     color: #303332;
@@ -145,7 +147,7 @@ input[type='checkbox'] {
 }
 #saveMed {
     height: 45px;
-    width: 160px;
+    width: 210px;
     border-radius: 15px;
     border-width: 0.1px;
     border-color: grey;
@@ -153,4 +155,10 @@ input[type='checkbox'] {
     font-size: 20px;
     font-weight: 700;
     margin: 15px 0px 5px;
+}
+#saveMed:hover {
+    background-color: #6FB9A7;
+}
+#saveMed:active {
+    color: white;
 }
