@@ -37,6 +37,7 @@
     width: 350px;
     margin: 0px auto; /*para 내에서 중앙정렬*/
     transition: all 0.3s ease-out;
+    border: 0.5px solid #E1E1E1;
 }
 section:hover {
     transform: translateY(-4px);
@@ -80,7 +81,8 @@ section:hover {
     height: 46%;
 }
 #b3txt {
-    padding: 20px 0px 0px;
+    margin: 15px auto;
+    padding: 0px 0px 0px;
     font-size: 40px;
     font-weight: 700;
     color: #303332;

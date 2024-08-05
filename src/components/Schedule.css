@@ -31,6 +31,7 @@
     margin: 0px auto; /*para 내에서 중앙정렬*/
     transition: all 0.3s ease-out;
     background-color: #D9F4E7;
+    border: 0.5px solid #E1E1E1;
 }
 
 .blck2 {
@@ -68,7 +69,8 @@
     background-color: #F3FFF9;
     border-radius: 30px;
     border-width: 0.5px;
-    position: relative
+    position: relative;
+    overflow: auto;
 }
 
 .schsec2 {
@@ -78,7 +80,39 @@
     background-color: #F3FFF9;
     border-radius: 30px;
     border-width: 0.5px;
-    position: relative
+    position: relative;
+}
+#schsec2h3 {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    font-weight: 400;
+    padding: 4px 0px;
+    margin:0px;
+    font-size: 18px;
+}
+.chooseMed {
+    border: none;
+    width: 340px;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#m222 {
+    display: inline-block;
+    height: 32px;
+    padding: 5px 10px;
+    margin: auto 2px;
+    background-color: #AAAAAA;
+    border-radius: 15px;
+    border-width: 0.1px;
+    font-size: 17px;
+}
+
+#m222:focus {
+    background-color: #70C3A7;
 }
 
 #schsavebtn { 
