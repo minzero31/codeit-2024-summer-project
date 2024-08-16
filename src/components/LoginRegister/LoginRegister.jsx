@@ -3,14 +3,28 @@ import "./LoginRegister.css";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 
+import { useNavigate } from "react-router-dom";
+
 const LoginRegister = () => {
   const [action, setAction] = useState("");
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 body에 클래스 추가
+    document.body.classList.add("login-register-background");
+
+    return () => {
+      // 컴포넌트가 언마운트될 때 body에서 클래스 제거
+      document.body.classList.remove("login-register-background");
+    };
+  }, []);
 
   //상태관리
   const [userName, setUserName] = useState(""); //이름 상태 추가
   const [userID, setUserID] = useState(""); //아이디 상태 추가
   const [userEmail, setUserEmail] = useState(""); //메일 상태 추가
   const [userPassword, setUserPassword] = useState(""); //비밀번호 상태 추가
+
+  const navigate = useNavigate();
 
   const registerLink = () => {
     setAction(" active");
@@ -27,7 +41,7 @@ const LoginRegister = () => {
 
   const handleLogin = () => {
     const userData = {
-      userId: userId,
+      userID: userID,
       userPassword: userPassword,
     };
     fetch("http://localhost:3001/login", {
@@ -41,9 +55,14 @@ const LoginRegister = () => {
       .then((json) => {
         if (json.isLogin === "True") {
           alert("로그인 성공!");
+          navigate("/main");
         } else {
           alert("로그인 실패: " + json.isLogin);
         }
+      })
+      .catch((error) => {
+        console.error("Fetch Error: ", error);
+        alert("로그인중 오류");
       });
   };
 

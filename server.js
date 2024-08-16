@@ -55,9 +55,12 @@ app.post("/login", (req, res) => {
     // id와 pw가 입력되었는지 확인
     db.query(
       "SELECT * FROM userInfo WHERE userID = ?",
-      [usernID],
-      function (error, results, fields) {
-        if (error) throw error;
+      [userID],
+      (error, results, fields) => {
+        if (error) {
+          console.error("DB Query Error: ", error);
+          return res.status(500).send({ isLogin: "Server error" });
+        }
         if (results.length > 0) {
           // db에서의 반환값이 있다 = 일치하는 아이디가 있다.
 
@@ -67,11 +70,16 @@ app.post("/login", (req, res) => {
             (err, result) => {
               // 입력된 비밀번호가 해시된 저장값과 같은 값인지 비교
 
+              if (err) {
+                console.error("Bcrypt Error:", err);
+                return res.status(500).send({ isLogin: "Server error" });
+              }
+
               if (result === true) {
                 // 비밀번호가 일치하면
                 req.session.is_logined = true; // 세션 정보 갱신
-                req.session.nickname = userID;
-                req.session.save(function () {
+                req.session.userID = userID; //세션에 userID 저장
+                req.session.save(() => {
                   sendData.isLogin = "True";
                   res.send(sendData);
                 });
@@ -93,6 +101,30 @@ app.post("/login", (req, res) => {
     // 아이디, 비밀번호 중 입력되지 않은 값이 있는 경우
     sendData.isLogin = "아이디와 비밀번호를 입력하세요!";
     res.send(sendData);
+  }
+});
+
+app.get("/userinfo", (req, res) => {
+  if (req.session.is_logined) {
+    db.query(
+      "SELECT * FROM userInfo WHERE userID = ?",
+      [req.session.userID],
+      (error, result) => {
+        if (error) throw error;
+
+        const user = result[0];
+
+        const sendData = {
+          isLogin: "True",
+          userName: user.userName,
+          userEmail: user.userEmail,
+          userBirth: user.userBirth,
+        };
+        res.send(sendData);
+      }
+    );
+  } else {
+    res.send({ isLogin: "False" });
   }
 });
 

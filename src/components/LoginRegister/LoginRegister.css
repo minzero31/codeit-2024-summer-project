@@ -1,3 +1,8 @@
+body.login-register-background {
+  background: url("../Assets/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 .wrapper {
   position: relative;
   width: 420px;

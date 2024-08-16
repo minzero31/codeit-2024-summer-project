@@ -1,0 +1,35 @@
+/* main.css */
+.main-container {
+  background-color: #fff; /* 기본 배경 색상 */
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 기타 스타일 설정 */
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column; /* 수직으로 나열 */
+  align-items: center; /* 가운데 정렬 */
+  text-align: center; /* 가운데 정렬 */
+}
+
+h1 {
+  font-size: 2rem; /* 제목 크기 */
+  margin-bottom: 20px; /* 제목과 정보 사이의 여백 */
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column; /* 정보 항목을 수직으로 나열 */
+  align-items: center; /* 가운데 정렬 */
+}
+
+.info-item {
+  font-size: 1rem; /* 정보 항목 텍스트 크기 */
+  margin: 10px 0; /* 각 정보 항목 사이의 여백 */
+  color: #333; /* 텍스트 색상 */
+}
