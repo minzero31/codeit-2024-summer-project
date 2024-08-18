@@ -1,0 +1,88 @@
+#ch1 {
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+.chatmain {
+    display: flex;
+    flex-direction: row;
+    //column-count: 3;
+    height: 640px;
+}
+.p0 {
+    width: 140px;
+}
+.p1 {
+    padding-top: 10px;
+    //width: ?;
+}
+
+.box1 {
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    min-width: 400px;
+    width: 30%;
+    height: 90%;
+    margin: 0px auto; /*para 내에서 중앙정렬*/
+    transition: all 0.3s ease-out;
+    background-color: #D9F4E7;
+    border: 0.5px solid #E1E1E1;
+}
+
+#ch2 {
+    margin: 12px;
+}
+.chattingbox {
+    height: 80%;
+    width: 90%;
+    background-color: grey;
+    margin: 0px auto; 
+    overflow: auto;
+    padding: 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-messagebox, .bot-messagebox {
+    margin: 0px 5px;
+    padding: 5px;
+    display: flex;
+}
+.user-message, .bot-message {
+    border-radius: 20px;
+    padding: 10px 17px;
+    border: 0.3px solid black;
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.01);
+    margin: 0px;
+}
+.user-message {
+    align-items: flex-end;
+    background-color: #67AEA8;
+    font-size: 18px;
+    color: white;
+    margin-left: auto;
+}
+.bot-message {
+    align-items: flex-front;
+    display: block;
+    background-color: white;
+    font-size: 16px;
+    color: black;
+}
+
+.user-messagebox {
+    align-items: flex-end;
+    margin-left: auto; /* 왼쪽 여백을 자동으로 채워 메시지를 오른쪽으로 밀어냄 */
+    max-width: 60%; 
+}
+.bot-messagebox { 
+    align-items: flex-start;
+    margin-right: auto; /* 오른쪽 여백을 자동으로 채워 메시지를 왼쪽으로 밀어냄 */
+    max-width: 80%; /* 말풍선의 최대 너비를 설정 */
+}
+
+#loadingp {
+    color: black;
+    font-size: 15px;
+}
