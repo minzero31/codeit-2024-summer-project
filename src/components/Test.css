@@ -1,0 +1,56 @@
+#testh1 {
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+.testmain {
+    display: flex;
+    flex-direction: row;
+    //column-count: 3;
+    height: 640px;
+}
+.part0 {
+    width: 210px;
+}
+.part3 {
+    width: 80px;
+}
+.part1, .part2 {
+    padding-top: 100px;
+}
+.part1 {
+    width: 50%;
+}
+.part2 {
+    width: 50%;
+    margin-right: 50px;
+}
+
+.bone, .btwo {
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    width: 70%;
+    height: 65%;
+    margin: 0px auto; /*para 내에서 중앙정렬*/
+    transition: all 0.3s ease-out;
+    border: 1.5px solid #E1E1E1;
+}
+
+.bone {
+    background-color: #F7F7F7;
+}
+
+.btwo {
+    background-color: #FFE8F6;
+}
+#testh2 {
+    font-size: 38px;
+    margin: 0px auto;
+    padding: 100px 0px 40px;
+}
+
+#test_arrow {
+    height: 18%;
+    width: 18%;
+}

@@ -1,0 +1,55 @@
+.menubar {
+    //display: flex;
+    //justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 5px;
+    color: #101010;
+    width: 80px; /* 메뉴바의 너비 */
+    position: fixed; /* 화면의 좌측에 고정 */
+    margin-left: 10px;
+  }
+  
+  .menubar-logo a {
+    margin-left: 5px;
+  }
+  
+  .menubar-menu {
+    //background-color: #E4F6D6;
+    background-image: url('greentopurple.jpg');
+    list-style: none;
+    display: center;
+    text-align: center;
+    margin: 15px 0px 45px;
+    padding: 5px 2px; /*세로가로*/
+    border-radius: 40px;
+  }
+
+  img {
+    width: 70%; /* 컨테이너의 너비에 맞게 조정 */
+    height: auto;
+    fliter: contrast(300%);
+  }
+  
+  
+  .menubar-menu li {
+    margin: 30px 13px;
+    height: 45px;
+    padding-top: 7px;
+  }
+  
+  .menubar-menu li a {
+    //color: #528A28;
+    //font-size: 1rem;
+    margin: 0px 0px;
+    padding: 4px 0px;
+  }
+  
+  .menubar-menu li:hover {
+    background-color: #DFC1F1;
+    border-radius: 50%;
+    //filter: invert(100%);
+    //color: #E4F6D6;
+    //text-decoration: underline;
+    //font-size: 1.2rem;
+  }
+  

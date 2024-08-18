@@ -1,0 +1,135 @@
+#schh1 {
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+.schmain {
+    display: flex;
+    flex-direction: row;
+    //column-count: 3;
+    height: 640px;
+}
+.par0 {
+    width: 120px;
+}
+.par1, .par2 {
+    padding-top: 10px;
+}
+.par1 {
+    width: 65%;
+}
+.par2 {
+    width: 35%;
+    margin-right: 50px;
+}
+.blck1, .blck2 {
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    width: 90%;
+    height: 90%;
+    margin: 0px auto; /*para 내에서 중앙정렬*/
+    transition: all 0.3s ease-out;
+    background-color: #D9F4E7;
+    border: 0.5px solid #E1E1E1;
+}
+
+.blck2 {
+    position: relative;
+    background-color: #D9F4E7;
+}
+
+.blck2::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: -10px;
+    right: 0px;
+    bottom: 0px;
+    opacity: 0.05;
+    background-image: url('hospital2_icon.png');
+    background-repeat: repeat;
+    border-radius: 35px;
+}
+
+
+#schh2 {
+    font-size: 30px;
+    text-align: center;
+    padding: 25px 25px 0px;
+    margin-top: 0px;
+    position: relative;
+}
+
+.schsec1 {
+    height: 50%;
+    width: 83%;
+    margin: -5px auto;
+    margin-bottom: 20px;
+    background-color: #F3FFF9;
+    border-radius: 30px;
+    border-width: 0.5px;
+    position: relative;
+    overflow: auto;
+}
+
+.schsec2 {
+    height: 13%;
+    width: 83%;
+    margin: 0px auto;
+    background-color: #F3FFF9;
+    border-radius: 30px;
+    border-width: 0.5px;
+    position: relative;
+}
+#schsec2h3 {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    font-weight: 400;
+    padding: 4px 0px;
+    margin:0px;
+    font-size: 18px;
+}
+.chooseMed {
+    border: none;
+    width: 340px;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+#m222 {
+    display: inline-block;
+    height: 32px;
+    padding: 5px 10px;
+    margin: auto 2px;
+    background-color: #AAAAAA;
+    border-radius: 15px;
+    border-width: 0.1px;
+    font-size: 17px;
+}
+
+#m222:focus {
+    background-color: #70C3A7;
+}
+
+#schsavebtn { 
+    height: 47px;
+    width: 160px;
+    border-radius: 17px;
+    border-width: 0.1px;
+    border-color: grey;
+    background-color: #70C3A7;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 15px 0px 5px;
+    position: relative
+}
+#schsavebtn:hover {
+    background-color: #6FB9A7;
+}
+#schsavebtn:active {
+    color: white;
+}
