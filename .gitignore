@@ -13,6 +13,9 @@
 
 # misc
 .DS_Store
+
+# Environment variables
+.env           # <-- 이 줄을 추가
 .env.local
 .env.development.local
 .env.test.local
