@@ -55,7 +55,7 @@ const LoginRegister = () => {
       .then((json) => {
         if (json.isLogin === "True") {
           alert("로그인 성공!");
-          navigate("/main");
+          navigate("/home");
         } else {
           alert("로그인 실패: " + json.isLogin);
         }

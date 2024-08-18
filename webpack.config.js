@@ -1,6 +1,7 @@
 // webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   mode: "development", // 또는 'production'
@@ -12,6 +13,11 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html", // 템플릿 HTML 파일
+    }),
+    new webpack.DefinePlugin({
+      "process.env.REACT_APP_GEMINI_API_KEY": JSON.stringify(
+        process.env.REACT_APP_GEMINI_API_KEY
+      ),
     }),
   ],
   module: {
