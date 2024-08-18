@@ -20,7 +20,7 @@ const Find = () => {
         </div>
         <div className='pa2'>
           <section className='blk2'>
-            <p>구글 지도 검색 결과 조회</p>
+            <p>병원 후기 보기</p>
           </section>
         </div>
       </main>  
