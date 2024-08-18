@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import './Chat.css';
 
 // 환경 변수에서 API 키를 가져옵니다.
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
 const Chat = () => {
   const [prompt, setPrompt] = useState(''); // 사용자 입력 상태
-  const [response, setResponse] = useState(''); // API 응답 상태
+  const [response, setResponse] = useState([]); // API 응답 상태
   const [loading, setLoading] = useState(false); // 로딩 상태
 
   // 입력 필드의 변화 감지
@@ -15,6 +16,8 @@ const Chat = () => {
 
   // API 호출 함수
   const fetchResponse = async () => {
+    setResponse((prevMessages) => [...prevMessages, { sender: '사용자', text: prompt }]);
+    
     setLoading(true);
     try {
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`, {
@@ -48,10 +51,10 @@ const Chat = () => {
         ? data.candidates[0].content.parts[0].text
         : '응답 데이터가 없습니다.';
 
-      setResponse(extractedText);
+      setResponse((prevMessages) => [...prevMessages, { sender: '챗봇', text: extractedText }]);
     } catch (error) {
       console.error('Error:', error);
-      setResponse(`오류가 발생했습니다: ${error.message}`);
+      setResponse((prevMessages) => [...prevMessages, { sender: '챗봇', text: `오류가 발생했습니다: ${error.message}`}]);
     } finally {
       setLoading(false);
     }
@@ -68,22 +71,45 @@ const Chat = () => {
   };
 
   return (
-    <div>
-      <h1>Chat</h1>
-      <p>인공지능을 이용한 병원 추천 및 찾기</p>
-      
-      <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          value={prompt} 
-          onChange={handleInputChange} 
-          placeholder="질문을 입력하세요" 
-        />
-        <button type="submit">전송</button>
-      </form>
+    <>
+      <div>
+        <h1 id='ch1'>Chat 인공지능을 이용한 병원 추천 및 찾기</h1>
+      </div>
+      <main className='chatmain'>
+        <div className='p0'>
+          <p> </p>
+        </div>
+        <div className='p1'>
+          <section className='box1'>
+            <h2 id='ch2'>채팅창</h2>
+            <div className='chattingbox'>
+              {loading ? // 로딩중일때
+                <div>
+                {response.map((resp, index) => (
+                  <p key={index} className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</p>
+                  ))} <p id='loadingp'>로딩 중...</p>
+                </div> : // 답변 출력될때
+                <div> 
+                  {response.map((resp, index) => (
+                    <p key={index} className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</p>
+                  ))}
+                </div>
+              }
+            </div>
+            <form onSubmit={handleSubmit}>
+              <input 
+                type="text" 
+                value={prompt} 
+                onChange={handleInputChange} 
+                placeholder="질문을 입력해주세요!" 
+              />
+              <button type="submit">SEND</button>
+            </form>
+          </section>
+        </div>
+      </main>  
+  </>
 
-      {loading ? <p>로딩 중...</p> : <p>응답: {response}</p>}
-    </div>
   );
 };
 
