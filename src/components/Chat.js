@@ -86,12 +86,12 @@ const Chat = () => {
               {loading ? // 로딩중일때
                 <div>
                 {response.map((resp, index) => (
-                  <p key={index} className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</p>
+                  <p className={resp.sender === '사용자' ? 'user-messagebox' : 'bot-messagebox'}><label className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</label></p>
                   ))} <p id='loadingp'>로딩 중...</p>
                 </div> : // 답변 출력될때
                 <div> 
                   {response.map((resp, index) => (
-                    <p key={index} className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</p>
+                    <p className={resp.sender === '사용자' ? 'user-messagebox' : 'bot-messagebox'}><label className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</label></p>
                   ))}
                 </div>
               }

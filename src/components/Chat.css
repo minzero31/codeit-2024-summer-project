@@ -11,7 +11,7 @@
     height: 640px;
 }
 .p0 {
-    width: 120px;
+    width: 140px;
 }
 .p1 {
     padding-top: 10px;
@@ -45,25 +45,29 @@
 }
 
 .user-messagebox, .bot-messagebox {
-    margin: 5px;
-    padding: 10px;
-    border: none;
+    margin: 0px 5px;
+    padding: 5px;
+    display: flex;
 }
 .user-message, .bot-message {
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 20px;
+    padding: 10px 17px;
     border: 0.3px solid black;
     box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.01);
+    margin: 0px;
 }
 .user-message {
+    align-items: flex-end;
     background-color: #67AEA8;
-    font-size: 19px;
+    font-size: 18px;
     color: white;
+    margin-left: auto;
 }
 .bot-message {
+    align-items: flex-front;
     display: block;
     background-color: white;
-    font-size: 17px;
+    font-size: 16px;
     color: black;
 }
 
