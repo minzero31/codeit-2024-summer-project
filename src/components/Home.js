@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -20,10 +21,11 @@ const Home = () => {
             </div>
             <div className='para2'>
                 <section className='block2'>
-                    <h3 id='block2h'>Health<br/>Care<br/>News +</h3>
+                <a href="https://www.bbc.com/korean/topics/c95y3gpd895t" target="_blank" rel="noopener noreferrer"><h3 id='block2h'>Health<br/>Care<br/>News +</h3></a>
                 </section>
                 <section className='block3'>
-                    <p id='b3txt'>병원 찾기<img id='hosPic' src='images/hospital_icon.png' alt='pic of hospital icon'/></p>
+
+                    <Link to="/find"><p id='b3txt'>병원 찾기<img id='hosPic' src='images/hospital_icon.png' alt='pic of hospital icon'/></p></Link>
                 </section>
             </div>
             <div className='para3'>
