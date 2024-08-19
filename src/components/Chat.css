@@ -86,3 +86,39 @@
     color: black;
     font-size: 15px;
 }
+.selection-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+}
+.selection-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+.selection-screen .box {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9F4E7;
+    border-radius: 15px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.selection-screen .box:hover {
+    transform: scale(1.05);
+}
+
+.selection-screen .box:active {
+    transform: scale(0.95);
+}

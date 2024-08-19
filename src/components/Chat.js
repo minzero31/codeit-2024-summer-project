@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import './Chat.css';
 
-// 환경 변수에서 API 키를 가져옵니다.
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 
 const Chat = () => {
   const [prompt, setPrompt] = useState(''); // 사용자 입력 상태
   const [response, setResponse] = useState([]); // API 응답 상태
   const [loading, setLoading] = useState(false); // 로딩 상태
+  const [selectedPrompt, setSelectedPrompt] = useState(null); // 선택된 프롬프트 상태
 
-  // 입력 필드의 변화 감지
   const handleInputChange = (e) => {
     setPrompt(e.target.value);
   };
 
-  // API 호출 함수
   const fetchResponse = async () => {
     setResponse((prevMessages) => [...prevMessages, { sender: '사용자', text: prompt }]);
-    
+
     setLoading(true);
     try {
+      const combinedPrompt = selectedPrompt + prompt;
+
       const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`, {
         method: 'POST',
         headers: {
@@ -30,7 +30,7 @@ const Chat = () => {
             {
               parts: [
                 {
-                  text: prompt,
+                  text: combinedPrompt,
                 },
               ],
             },
@@ -44,9 +44,8 @@ const Chat = () => {
       }
 
       const data = await res.json();
-      console.log('API 응답 데이터:', data); // 전체 응답 데이터 출력 (콘솔에서 확인)
+      console.log('API 응답 데이터:', data);
 
-      // 응답 데이터에서 text 추출
       const extractedText = data.candidates && data.candidates.length > 0 && data.candidates[0].content && data.candidates[0].content.parts.length > 0
         ? data.candidates[0].content.parts[0].text
         : '응답 데이터가 없습니다.';
@@ -60,7 +59,6 @@ const Chat = () => {
     }
   };
 
-  // 폼 제출 처리
   const handleSubmit = (e) => {
     e.preventDefault();
     if (prompt) {
@@ -70,6 +68,29 @@ const Chat = () => {
     }
   };
 
+  // 선택 박스가 클릭되면 해당 프롬프트를 설정하고 채팅 화면으로 전환
+  const handleBoxClick = (prompt) => {
+    setSelectedPrompt(prompt);
+  };
+
+  if (!selectedPrompt) {
+    // 선택된 프롬프트가 없으면 선택 박스 화면을 보여줍니다.
+    return (
+      <main className="selection-screen">
+        <div className="box" onClick={() => handleBoxClick(" '당신의 건강 상태에 따른 병원을 추천해드립니다.' 라는 문구가 답변 맨 처음에 꼭 추가되도록 해주고, 답변은 3줄 이내로 해줘.")}>
+          증상 별 병원 추천
+        </div>
+        <div className="box" onClick={() => handleBoxClick(" '응급 처치 방법을 안내해드리겠습니다.' 라는 문구가 답변 맨 처음에 꼭 추가되도록 해주고, 답변은 3줄 이내로 해줘.")}>
+          응급 처치 방법 안내
+        </div>
+        <div className="box" onClick={() => handleBoxClick(" '약 복용 시 주의 식품을 안내해드리겠습니다.' 라는 문구가 답변 맨 처음에 꼭 추가되도록 해주고, 답변은 3줄 이내로 해줘.")}>
+          약 복용 시 주의 식품 안내
+        </div>
+      </main>
+    );
+  }
+
+  // 선택된 프롬프트가 있으면 채팅 화면을 보여줍니다.
   return (
     <>
       <div>
@@ -83,15 +104,17 @@ const Chat = () => {
           <section className='box1'>
             <h2 id='ch2'>채팅창</h2>
             <div className='chattingbox'>
-              {loading ? // 로딩중일때
+              {loading ? 
                 <div>
-                {response.map((resp, index) => (
-                  <p className={resp.sender === '사용자' ? 'user-messagebox' : 'bot-messagebox'}><label className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</label></p>
-                  ))} <p id='loadingp'>로딩 중...</p>
-                </div> : // 답변 출력될때
+                  {response.map((resp, index) => (
+                    <p className={resp.sender === '사용자' ? 'user-messagebox' : 'bot-messagebox'} key={index}><label className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</label></p>
+                  ))} 
+                  <p id='loadingp'>로딩 중...</p>
+                </div> 
+                : 
                 <div> 
                   {response.map((resp, index) => (
-                    <p className={resp.sender === '사용자' ? 'user-messagebox' : 'bot-messagebox'}><label className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</label></p>
+                    <p className={resp.sender === '사용자' ? 'user-messagebox' : 'bot-messagebox'} key={index}><label className={resp.sender === '사용자' ? 'user-message' : 'bot-message'}>{resp.text}</label></p>
                   ))}
                 </div>
               }
@@ -108,8 +131,7 @@ const Chat = () => {
           </section>
         </div>
       </main>  
-  </>
-
+    </>
   );
 };
 
