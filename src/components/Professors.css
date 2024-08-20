@@ -1,0 +1,97 @@
+#profh1 {
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+}
+
+.profmain {
+    display: flex;
+    flex-direction: row;
+    height: 640px;
+}
+.p_zero {
+    width: 160px;
+    //background-color: black;
+}
+
+.p_one {
+    width: 80%;
+    height: 600px; /* 높이를 명시적으로 설정 */
+    padding: 10px;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+.prof_article {
+    background-color: #D9F4E7;
+    padding: 10px;
+    margin: 20px 25px;
+    height: 220px;
+    border-radius: 15px;
+    border: 0.5px solid #E1E1E1;
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+}
+.more_info {
+    background-color: #DEDEDE;
+    padding: 100px 0px;
+    margin: 20px 25px;
+    height: 50px;
+    border-radius: 15px;
+    box-shadow: 5px 6px 6px rgba(0, 0, 0, 0.1);
+    font-size: 40px;
+    text-align: center;
+    opacity: 0.5;
+}
+a {
+    text-decoration: none;
+}
+.p_name {
+    font-size: 20px;
+    margin: 4px 30px;
+    text-align: left;
+}
+.prof_struct {
+    display: grid;
+    grid-template-columns: 4fr 2fr 6fr;
+    grid-template-rows: auto;
+    height: 85%;
+}
+
+.p_img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    max-height: 190px;
+    max-width: 150px;
+    margin-left: 10px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+.list1 {
+    display: flex;
+    flex-direction: column;
+    //background-color: red;
+    border-right: 1px solid green;
+}
+.list2 {
+    display: flex;
+    flex-direction: column;
+    //background-color: blue;
+}
+
+#list_col {
+    text-decoration: bold;
+    font-size: 20px;
+    margin: auto 0px;
+    text-align: center;
+    //border-bottom: 1px solid green;
+}
+#list_text {
+    font-size: 18px;
+    margin: auto 15px;
+    text-align: left;
+    border-bottom: 1px solid green;
+
+}
