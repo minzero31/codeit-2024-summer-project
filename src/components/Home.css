@@ -65,12 +65,15 @@ section:hover {
   border-radius: 8px;
   background-color: #d9f4e7;
   height: 95%;
+  position: relative;
 }
 
 .profile-info {
   display: flex;
   align-items: center;
   gap: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 #usrImg {
@@ -81,9 +84,7 @@ section:hover {
 }
 
 .userinfo_box {
-  display: flex;
-  flex-direction: column; /* 정보를 수직으로 배치 */
-  margin-top: 20px;
+  margin-top: 50px;
   text-align: left; /* 왼쪽 정렬 */
 }
 
@@ -94,15 +95,23 @@ section:hover {
 
 .userinfo_text span {
   font-weight: bold;
+  margin-bottom: 6px;
+  display: block;
 }
 
 .userinfo_edit {
-  background-color: #007bff;
+  position: absolute;
+  bottom: 10px; /* block1의 아래쪽으로 위치 */
+  right: 10px; /* block1의 왼쪽으로 위치 */
+  padding: 8px 16px;
+  background: #d9f4e7;
+  color: #333;
   border: none;
-  color: #f0f0f0;
-  padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
+  outline: none;
+
+  font-size: 16px;
 }
 
 .userinfo_edit:hover {
@@ -122,6 +131,8 @@ section:hover {
   padding: 20px; /* 내부 여백 */
   z-index: 1000; /* 다른 요소들보다 위에 표시 */
   display: none; /* 기본적으로 숨김 상태 */
+  border-radius: 10px; /* 모서리 둥글게 */
+  overflow: hidden; /* 자식 요소가 팝업을 넘어서지 않도록 */
 }
 
 .popup.show {
@@ -146,7 +157,62 @@ section:hover {
 }
 
 .popup h2 {
-  margin-top: 0;
+  font-size: 36px;
+  text-align: center;
+  color: #000000a4;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* 레이블과 입력 필드를 같은 줄에 배치 */
+.popup .form-group {
+  display: flex; /* Flexbox 사용 */
+  align-items: center; /* 세로 중앙 정렬 */
+  margin-bottom: 20px; /* 각 입력 필드 사이의 여백 */
+}
+
+.popup .form-group label {
+  flex: 0 0 150px; /* 레이블의 고정 너비 설정 */
+  margin-right: 6px; /* 레이블과 입력 필드 사이의 여백 */
+  font-size: 14px;
+  color: #000000a4;
+  font-weight: bold;
+}
+
+.popup .form-group input[type="text"],
+.popup .form-group input[type="email"],
+.popup .form-group input[type="password"] {
+  flex: 1; /* 입력 필드가 가능한 모든 공간을 차지하게 설정 */
+  height: 40px; /* 입력 필드의 높이 설정 */
+  background: transparent;
+  border: 2px solid rgba(112, 195, 167, 0.394);
+  border-radius: 20px; /* 둥근 모서리 */
+  font-size: 14px;
+  color: #000000a4;
+  padding: 10px;
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비 계산 */
+}
+
+.popup .form-group input::placeholder {
+  color: #000000a4;
+}
+
+.popup button {
+  width: 100%;
+  height: 45px;
+  background: #d9f4e7;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.popup button:hover {
+  background: #b2e2c8;
 }
 
 .block2 {

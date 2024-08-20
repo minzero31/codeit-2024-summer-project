@@ -54,7 +54,6 @@ const LoginRegister = () => {
       .then((res) => res.json())
       .then((json) => {
         if (json.isLogin === "True") {
-          alert("로그인 성공!");
           navigate("/home");
         } else {
           alert("로그인 실패: " + json.isLogin);
@@ -97,7 +96,6 @@ const LoginRegister = () => {
       .then((res) => res.json())
       .then((json) => {
         if (json.isSuccess === "True") {
-          alert("회원가입이 완료되었습니다!");
           loginLink();
         } else {
           alert("회원가입 실패: " + json.isSuccess);
