@@ -22,7 +22,21 @@ const Home = () => {
   });
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isAddPillPopupOpen, setIsAddPillPopupOpen] = useState(false);
   const [profilePicFile, setProfilePicFile] = useState(null);
+
+  //나중에 필요시 삭제
+  const [pillOptions, setPillOptions] = useState([]);
+  const [selectedPills, setSelectedPills] = useState([]);
+  const [dosageDays, setDosageDays] = useState({
+    Monday: false,
+    Tuesday: false,
+    Wednesday: false,
+    Thursday: false,
+    Friday: false,
+    Saturday: false,
+    Sunday: false,
+  });
 
   useEffect(() => {
     fetch("http://localhost:3001/userinfo", {
@@ -58,6 +72,19 @@ const Home = () => {
           window.location.href = "/";
         }
       });
+
+    //약 목록 가져오기
+    fetch("http://localhost:3001/pillOptions", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPillOptions(data.pills);
+      });
   }, []);
 
   const openEditPopup = () => {
@@ -66,6 +93,14 @@ const Home = () => {
 
   const closeEditPopup = () => {
     setIsPopupOpen(false);
+  };
+
+  const openAddPillPopup = () => {
+    setIsAddPillPopupOpen(true);
+  };
+
+  const closeAddPillPopup = () => {
+    setIsAddPillPopupOpen(false);
   };
 
   const handleInputChange = (e) => {
@@ -144,6 +179,42 @@ const Home = () => {
     Promise.all(promises).finally(() => {
       closeEditPopup();
     });
+  };
+
+  const handleDosageDayChange = (day) => {
+    setDosageDays((prevDosageDays) => ({
+      ...prevDosageDays,
+      [day]: !prevDosageDays[day],
+    }));
+  };
+
+  const handleAddPillSubim = (e) => {
+    e.preventDefault();
+
+    const selectedDays = Object.keys(dosageDays).filter(
+      (day) => dosageDays[day]
+    );
+
+    fetch("http://localhost:3001/addPillRoutine", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        pills: selectedPills,
+        dosageDays: dosageDays,
+      }),
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          alert("약 복용 루틴이 추가되었습니다.");
+          closeAddPillPopup();
+        } else {
+          alert("약 복용 루틴 추가에 실패했습니다.");
+        }
+      });
   };
 
   return (
@@ -401,10 +472,67 @@ const Home = () => {
                 <label htmlFor="med6">약6</label>
               </div>
             </fieldset>
-            <button id="addMed">+ 복용 루틴 추가하기</button>
+            <button id="addMed" onClick={openAddPillPopup}>
+              + 복용 루틴 추가하기
+            </button>
             <br />
             <button id="saveMed">저장하기</button>
           </section>
+
+          <div
+            id="addPillPopup"
+            className={`popup ${isAddPillPopupOpen ? "show" : ""}`}
+          >
+            <div className="pill_popup">
+              <span className="close_button" onClick={closeAddPillPopup}>
+                &times;
+              </span>
+
+              <h2>복용 루틴 추가</h2>
+              <form id="addPillForm" onSubmit={handleAddPillSubmit}>
+                <div className="form-group">
+                  <label>약 선택:</label>
+                  {pillOptions.map((pill) => (
+                    <div key={pill.id}>
+                      <input
+                        type="checkbox"
+                        id={`pill-${pill.id}`}
+                        name="pills"
+                        value={pill.name}
+                        onChange={(e) => {
+                          const { value, checked } = e.target;
+                          setSelectedPills((prevSelectedPills) =>
+                            checked
+                              ? [...prevSelectedPills, value]
+                              : prevSelectedPills.filter(
+                                  (pill) => pill !== value
+                                )
+                          );
+                        }}
+                      />
+                      <label htmlFor={`pill-${pill.id}`}>{pill.name}</label>
+                    </div>
+                  ))}
+                </div>
+                <div className="form-group">
+                  <label>복용 요일:</label>
+                  {Object.keys(dosageDays).map((day) => (
+                    <div key={day}>
+                      <input
+                        type="checkbox"
+                        id={day}
+                        name="dosageDays"
+                        checked={dosageDays[day]}
+                        onChange={() => handleDosageDayChange(day)}
+                      />
+                      <label htmlFor={day}>{day}</label>
+                    </div>
+                  ))}
+                </div>
+                <button type="submit">저장하기</button>
+              </form>
+            </div>
+          </div>
         </div>
       </main>
     </>
