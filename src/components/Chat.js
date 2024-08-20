@@ -83,7 +83,7 @@ const Chat = () => {
         <div className="box" onClick={() => handleBoxClick(" '응급 처치 방법을 안내해드리겠습니다.' 라는 문구가 답변 맨 처음에 꼭 추가되도록 해주고, 답변은 3줄 이내로 해줘.")}>
           응급 처치 방법 안내
         </div>
-        <div className="box" onClick={() => handleBoxClick(" '약 복용 시 주의 식품을 안내해드리겠습니다.' 라는 문구가 답변 맨 처음에 꼭 추가되도록 해주고, 답변은 3줄 이내로 해줘.")}>
+        <div className="box" onClick={() => handleBoxClick(" '약 복용 시 주의 식품에 안내해드리겠습니다.' 라는 문구가 답변의 맨 처음에 꼭 추가되도록 해주고, 답변은 3줄 이내로 해줘.")}>
           약 복용 시 주의 식품 안내
         </div>
       </main>
