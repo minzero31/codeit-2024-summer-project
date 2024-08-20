@@ -148,6 +148,39 @@ app.get("/userinfo", (req, res) => {
   }
 });
 
+app.post("/updateuserinfo", (req, res) => {
+  const { bloodType, height, weight, disease, emergencyContact } = req.body;
+
+  const sendData = { success: false };
+
+  if (req.session.is_logined) {
+    const userID = req.session.userID;
+
+    db.query(
+      `UPDATE Health_Info
+       SET bloodType = COALESCE(?, bloodType),
+           height = COALESCE(?, height),
+           weight = COALESCE(?, weight),
+           disease = COALESCE(?, disease),
+           emergencyContact = COALESCE(?, emergencyContact)
+       WHERE userID = ?`,
+      [bloodType, height, weight, disease, emergencyContact, userID],
+      (error, results) => {
+        if (error) {
+          console.error("DB Query Error: ", error);
+          sendData.message = "정보 업데이트에 실패했습니다.";
+          return res.status(500).send(sendData);
+        }
+        sendData.success = true;
+        res.send(sendData);
+      }
+    );
+  } else {
+    sendData.message = "로그인 상태가 아닙니다.";
+    res.send(sendData);
+  }
+});
+
 app.post("/signin", (req, res) => {
   console.log(req.body);
   // 데이터 받아서 결과 전송

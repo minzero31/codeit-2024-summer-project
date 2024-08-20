@@ -112,7 +112,14 @@ const Home = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userInfo),
+      body: JSON.stringify({
+        bloodType: userInfo.bloodType,
+        height: userInfo.height,
+        weight: userInfo.weight,
+        disease: userInfo.disease,
+        emergencyContact: userInfo.emergencyContact,
+      }),
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
