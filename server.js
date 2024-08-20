@@ -24,6 +24,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.use(express.static(path.join(__dirname, "/build")));
+// 정적 파일 서빙
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 

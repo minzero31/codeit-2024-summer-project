@@ -79,6 +79,9 @@ const Home = () => {
     let profilePicUpdated = false;
     let userInfoUpdated = false;
 
+    // 비동기 요청을 동시에 수행하기 위한 배열
+    const promises = [];
+
     // 파일 업로드
     if (profilePicFile) {
       const formData = new FormData();
@@ -131,9 +134,10 @@ const Home = () => {
         }
       });
 
-    if (profilePicUpdated && userInfoUpdated) {
+    // 모든 요청이 완료된 후 팝업창 닫기
+    Promise.all(promises).finally(() => {
       closeEditPopup();
-    }
+    });
   };
 
   return (
@@ -147,119 +151,118 @@ const Home = () => {
         </div>
         <div className="para1">
           <section className="block1">
-            <img id="usrImg" src={userInfo.profilePic} alt="User Profile" />
-            <h2>{userInfo.userName}회원님</h2>
+            <div className="profile-info">
+              <img id="usrImg" src={userInfo.profilePic} alt="User Profile" />
+              <h2>{userInfo.userName}회원님</h2>
 
-            <div className="userinfo_box">
-              <p className="userinfo_text">
-                Email : {userInfo.userEmail} <br />
-                생년월일 : {userInfo.userBirth} <br />
-                혈액형 : {userInfo.bloodType}
-                <br />키 : {userInfo.height}
-                <br />
-                몸무게 : {userInfo.weight}
-                <br />
-                질병 : {userInfo.disease}
-                <br />
-                긴급 연락처 : {userInfo.emergencyContact}
-                <br />
-              </p>
-              <button className="userinfo_edit" onClick={openEditPopup}>
-                수정
-              </button>
-              <p></p>
-            </div>
-
-            <div
-              id="editPopup"
-              className={`popup ${isPopupOpen ? "show" : ""}`}
-            >
-              <div className="popup_content">
-                <span className="close_button" onClick={closeEditPopup}>
-                  &times;
-                </span>
-
-                <h2>정보 수정</h2>
-
-                <form id="editForm" onSubmit={handleSubmit}>
-                  <label htmlFor="email">Email : </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="useremail"
-                    value={userInfo.userEmail}
-                    onChange={handleInputChange}
-                  />
+              <div className="userinfo_box">
+                <p className="userinfo_text">
+                  <span>Email :</span> {userInfo.userEmail} <br />
+                  <span>생년월일 :</span> {userInfo.userBirth} <br />
+                  <span>혈액형 :</span> {userInfo.bloodType}형<br />
+                  <span>키 :</span> {userInfo.height}cm
                   <br />
-                  <label htmlFor="birth">생년월일 : </label>
-                  <input
-                    type="text"
-                    id="birth"
-                    name="userBirth"
-                    value={userInfo.userBirth}
-                    readOnly
-                  />
+                  <span>몸무게 :</span> {userInfo.weight}kg
                   <br />
-                  <label htmlFor="bloodType">혈액형 : </label>
-                  <input
-                    type="text"
-                    id="bloodType"
-                    name="bloodType"
-                    value={userInfo.bloodType}
-                    onChange={handleInputChange}
-                  />
+                  <span>질병 :</span> {userInfo.disease}
                   <br />
-                  <label htmlFor="height">키 : </label>
-                  <input
-                    type="text"
-                    id="height"
-                    name="height"
-                    value={userInfo.height}
-                    onChange={handleInputChange}
-                  />
+                  <span>긴급 연락처 :</span> {userInfo.emergencyContact}
                   <br />
-                  <label htmlFor="weight">몸무게 : </label>
-                  <input
-                    type="text"
-                    id="weight"
-                    name="weight"
-                    value={userInfo.weight}
-                    onChange={handleInputChange}
-                  />
-                  <br />
-                  <label htmlFor="disease">질병 : </label>
-                  <input
-                    type="text"
-                    id="disease"
-                    name="disease"
-                    value={userInfo.disease}
-                    onChange={handleInputChange}
-                  />
-                  <br />
-                  <label htmlFor="emergencyContact">긴급 연락처 : </label>
-                  <input
-                    type="text"
-                    id="emergencyContact"
-                    name="emergencyContact"
-                    value={userInfo.emergencyContact}
-                    onChange={handleInputChange}
-                  />
-                  <br />
-                  <label htmlFor="profilePic">프로필 사진:</label>
-                  <input
-                    type="file"
-                    id="profilePic"
-                    name="profilePic"
-                    onChange={handleFileChange}
-                  />
-                  <br />
-                  <button type="submit" id="saveMed">
-                    저장하기
-                  </button>
-                </form>
+                </p>
+                <button className="userinfo_edit" onClick={openEditPopup}>
+                  수정
+                </button>
+                <p></p>
               </div>
             </div>
           </section>
+
+          <div id="editPopup" className={`popup ${isPopupOpen ? "show" : ""}`}>
+            <div className="popup_content">
+              <span className="close_button" onClick={closeEditPopup}>
+                &times;
+              </span>
+
+              <h2>정보 수정</h2>
+
+              <form id="editForm" onSubmit={handleSubmit}>
+                <label htmlFor="email">Email : </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="useremail"
+                  value={userInfo.userEmail}
+                  onChange={handleInputChange}
+                />
+                <br />
+                <label htmlFor="birth">생년월일 : </label>
+                <input
+                  type="text"
+                  id="birth"
+                  name="userBirth"
+                  value={userInfo.userBirth}
+                  readOnly
+                />
+                <br />
+                <label htmlFor="bloodType">혈액형 : </label>
+                <input
+                  type="text"
+                  id="bloodType"
+                  name="bloodType"
+                  value={userInfo.bloodType}
+                  onChange={handleInputChange}
+                />
+                <br />
+                <label htmlFor="height">키 : </label>
+                <input
+                  type="text"
+                  id="height"
+                  name="height"
+                  value={userInfo.height}
+                  onChange={handleInputChange}
+                />
+                <br />
+                <label htmlFor="weight">몸무게 : </label>
+                <input
+                  type="text"
+                  id="weight"
+                  name="weight"
+                  value={userInfo.weight}
+                  onChange={handleInputChange}
+                />
+                <br />
+                <label htmlFor="disease">질병 : </label>
+                <input
+                  type="text"
+                  id="disease"
+                  name="disease"
+                  value={userInfo.disease}
+                  onChange={handleInputChange}
+                />
+                <br />
+                <label htmlFor="emergencyContact">긴급 연락처 : </label>
+                <input
+                  type="text"
+                  id="emergencyContact"
+                  name="emergencyContact"
+                  value={userInfo.emergencyContact}
+                  onChange={handleInputChange}
+                />
+                <br />
+                <label htmlFor="profilePic">프로필 사진:</label>
+                <input
+                  type="file"
+                  id="profilePic"
+                  name="profilePic"
+                  onChange={handleFileChange}
+                />
+                <br />
+                <button type="submit" id="saveMed">
+                  저장하기
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
         <div className="para2">
           <section className="block2">
