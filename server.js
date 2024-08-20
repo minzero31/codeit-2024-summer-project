@@ -9,6 +9,20 @@ const sessionOption = require("./lib/sessionOption");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 
+const multer = require("multer");
+const fs = require("fs");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); //파일 이름에 타임스탬프
+  },
+});
+
+const upload = multer({ storage: storage });
+
 app.use(express.static(path.join(__dirname, "/build")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -54,7 +68,7 @@ app.post("/login", (req, res) => {
   if (userID && userPassword) {
     // id와 pw가 입력되었는지 확인
     db.query(
-      "SELECT * FROM userInfo WHERE userID = ?",
+      "SELECT * FROM Health_Info WHERE userID = ?",
       [userID],
       (error, results, fields) => {
         if (error) {
@@ -107,7 +121,7 @@ app.post("/login", (req, res) => {
 app.get("/userinfo", (req, res) => {
   if (req.session.is_logined) {
     db.query(
-      "SELECT * FROM userInfo WHERE userID = ?",
+      "SELECT * FROM Health_Info WHERE userID = ?",
       [req.session.userID],
       (error, result) => {
         if (error) throw error;
@@ -119,6 +133,12 @@ app.get("/userinfo", (req, res) => {
           userName: user.userName,
           userEmail: user.userEmail,
           userBirth: user.userBirth,
+          bloodType: user.bloodType,
+          height: user.height,
+          weight: user.weight,
+          disease: user.disease,
+          emergencyContact: user.emergencyContact,
+          profilePic: user.profilePic, // 프로필 사진 추가
         };
         res.send(sendData);
       }
@@ -141,7 +161,7 @@ app.post("/signin", (req, res) => {
 
   if (userName && userID && userEmail && userPassword && userBirth) {
     db.query(
-      "SELECT * FROM userInfo WHERE userID = ?",
+      "SELECT * FROM Health_Info WHERE userID = ?",
       [userID],
       function (error, results, fields) {
         if (error) {
@@ -153,7 +173,7 @@ app.post("/signin", (req, res) => {
           // 비밀번호 해시화
           const hashedPassword = bcrypt.hashSync(userPassword, 10);
           db.query(
-            "INSERT INTO userInfo (userName, userID, userEmail, userPassword, userBirth) VALUES(?,?,?,?,?)",
+            "INSERT INTO Health_Info (userName, userID, userEmail, userPassword, userBirth) VALUES(?,?,?,?,?)",
             [userName, userID, userEmail, hashedPassword, userBirth],
             function (error, data) {
               if (error) {
@@ -176,6 +196,33 @@ app.post("/signin", (req, res) => {
     sendData.isSuccess = "아이디와 비밀번호를 입력하세요!";
     res.send(sendData);
   }
+});
+
+// 파일 업로드 처리
+app.post("/uploadProfilePic", upload.single("profilePic"), (req, res) => {
+  const file = req.file;
+  if (!file) {
+    return res
+      .status(400)
+      .send({ success: false, message: "파일을 업로드해주세요." });
+  }
+
+  const profilePicUrl = `/uploads/${file.filename}`;
+
+  // 데이터베이스에 이미지 URL 저장
+  db.query(
+    "UPDATE Health_Info SET profilePic = ? WHERE userID = ?",
+    [profilePicUrl, req.session.userID],
+    (error, results) => {
+      if (error) {
+        console.error("DB Query Error: ", error);
+        return res
+          .status(500)
+          .send({ success: false, message: "프로필 사진 업데이트 실패" });
+      }
+      res.send({ success: true, profilePicUrl });
+    }
+  );
 });
 
 app.listen(port, () => {
