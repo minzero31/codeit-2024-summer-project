@@ -11,7 +11,7 @@ const Menubar = () => {
       <ul className="menubar-menu">
         <li><Link to="/"><img src="images/home2_icon.png" alt="Home" /></Link></li>
         <li><Link to="/schedule"><img src="images/cal2_icon.png" alt="Schedule" /></Link></li>
-        <li><Link to="/find"><img src="c" alt="Find" /></Link></li>
+        <li><Link to="/find"><img src="images/map_icon.png" alt="Find" /></Link></li>
         <li><Link to="/chat"><img src="images/chat_icon.png" alt="Chat" /></Link></li>
         <li><Link to="/professors"><img src="images/doctor2_icon.png" alt="Professors" /></Link></li>
         <li><Link to="/test"><img src="images/list_icon.png" alt="Test" /></Link></li>
