@@ -3,12 +3,6 @@
 }
 
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-
 .topLogo {
   display: flex;
   justify-content: flex-start;
