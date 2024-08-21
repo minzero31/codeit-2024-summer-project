@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
         <div>
-          <h1 id='homeh1'>00님, 어서오세요.</h1>
+          <h1 id='homeh1'>민경님, 어서오세요.</h1>
         </div>
         <main className='homemain'>
             <div className='para0'>

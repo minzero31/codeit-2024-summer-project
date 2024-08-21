@@ -2,19 +2,19 @@
   text-align: center;
 }
 
-.topLogo {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 8.5vh; 
-  //border: 1px solid black;
-  font-size: calc(10px + 2vmin);
-  margin: 3px;
-  margin-left: 20px;
-  margin-bottom: 10px;
-  color: black;
-  pointer-events: none;
+#logo {
+  margin: 7px 35px;
+  margin-right: auto;
+  height: 70px; 
+  width:70px;
+  object-fit: contain;
 }
+.topLogo {
+  height: 80px;
+  border: none;
+  display: flex;
+}
+
 
 .Bar {
   text-align: center;

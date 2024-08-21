@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <header className="topLogo">
           <p>
-            Healthcare Inc.(로고)
+            <img id='logo' src='images/logo_icon.png' alt="Logo" />
           </p>
         </header>
       </div>
