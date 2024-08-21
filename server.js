@@ -261,6 +261,106 @@ app.post("/uploadProfilePic", upload.single("profilePic"), (req, res) => {
   );
 });
 
+app.post("/addPillRoutine", (req, res) => {
+  const { pillName, dosageDays } = req.body;
+  const userID = req.session.userID;
+
+  if (!req.session.is_logined) {
+    return res
+      .status(401)
+      .send({ success: false, message: "로그인 상태가 아닙니다." });
+  }
+
+  // DosageDays 형식으로 변환
+  const dosageDaysFormatted = {
+    Monday: dosageDays.includes("Monday") ? "O" : "X",
+    Tuesday: dosageDays.includes("Tuesday") ? "O" : "X",
+    Wednesday: dosageDays.includes("Wednesday") ? "O" : "X",
+    Thursday: dosageDays.includes("Thursday") ? "O" : "X",
+    Friday: dosageDays.includes("Friday") ? "O" : "X",
+    Saturday: dosageDays.includes("Saturday") ? "O" : "X",
+    Sunday: dosageDays.includes("Sunday") ? "O" : "X",
+  };
+
+  // 기존 복용 루틴 삭제
+  db.query(
+    "DELETE FROM DosageDays WHERE userID = ? AND pillName = ?",
+    [userID, pillName],
+    (error) => {
+      if (error) {
+        console.error("DB Query Error: ", error);
+        return res
+          .status(500)
+          .send({ success: false, message: "복용 루틴 삭제 실패" });
+      }
+
+      // 새로운 복용 루틴 추가
+      db.query(
+        "INSERT INTO DosageDays (userID, pillName, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        [
+          userID,
+          pillName,
+          dosageDaysFormatted.Monday,
+          dosageDaysFormatted.Tuesday,
+          dosageDaysFormatted.Wednesday,
+          dosageDaysFormatted.Thursday,
+          dosageDaysFormatted.Friday,
+          dosageDaysFormatted.Saturday,
+          dosageDaysFormatted.Sunday,
+        ],
+        (error) => {
+          if (error) {
+            console.error("DB Query Error: ", error);
+            return res
+              .status(500)
+              .send({ success: false, message: "복용 루틴 추가 실패" });
+          }
+          res.send({
+            success: true,
+            message: "복용 루틴이 성공적으로 추가되었습니다.",
+          });
+        }
+      );
+    }
+  );
+});
+
+// 예시: 사용자의 복용 약 정보를 제공하는 엔드포인트
+app.get("/getDosageDays", (req, res) => {
+  const userID = req.session.userID;
+
+  if (!userID) {
+    return res.status(401).send({ success: false, message: "로그인 필요" });
+  }
+
+  db.query(
+    "SELECT pillName FROM DosageDays WHERE userID = ?",
+    [userID],
+    (error, results) => {
+      if (error) {
+        console.error("DB Query Error: ", error);
+        return res
+          .status(500)
+          .send({ success: false, message: "약 목록 조회 실패" });
+      }
+
+      res.send({ pills: results.map((result) => result.pillName) });
+    }
+  );
+});
+
+app.get("/getpillOptions", (req, res) => {
+  db.query("SELECT * FROM pillOptions", (error, results) => {
+    if (error) {
+      console.error("DB Query Error: ", error);
+      return res
+        .status(500)
+        .send({ success: false, message: "약 목록 조회 실패" });
+    }
+    res.send({ pills: results });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
