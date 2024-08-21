@@ -1,5 +1,12 @@
-import React from 'react';
-import './Home.css';
+import React, { useEffect, useState } from "react";
+import "./Home.css";
+import { FaRegEnvelope } from "react-icons/fa";
+import { LiaBirthdayCakeSolid } from "react-icons/lia";
+import { MdOutlineBloodtype } from "react-icons/md";
+import { LuRuler } from "react-icons/lu";
+import { MdOutlineMonitorWeight } from "react-icons/md";
+import { TbBuildingHospital } from "react-icons/tb";
+import { IoCallOutline } from "react-icons/io5";
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState({
@@ -287,13 +294,103 @@ const Home = () => {
 
               <p></p>
             </div>
-            <div className='para2'>
-                <section className='block2'>
-                    <h3 id='block2h'>Health<br/>Care<br/>News +</h3>
-                </section>
-                <section className='block3'>
-                    <p id='b3txt'>병원 찾기<img id='hosPic' src='images/hospital_icon.png' alt='pic of hospital icon'/></p>
-                </section>
+            <button className="userinfo_edit" onClick={openEditPopup}>
+              수정
+            </button>
+          </section>
+
+          <div id="editPopup" className={`popup ${isPopupOpen ? "show" : ""}`}>
+            <div className="popup_content">
+              <span className="close_button" onClick={closeEditPopup}>
+                &times;
+              </span>
+
+              <h2>정보 수정</h2>
+
+              <form id="editForm" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="email">Email : </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="useremail"
+                    value={userInfo.userEmail}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="birth">생년월일:</label>
+                  <input
+                    type="text"
+                    id="birth"
+                    name="userBirth"
+                    value={userInfo.userBirth}
+                    readOnly
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="bloodType">혈액형:</label>
+                  <input
+                    type="text"
+                    id="bloodType"
+                    name="bloodType"
+                    value={userInfo.bloodType}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="height">키:</label>
+                  <input
+                    type="text"
+                    id="height"
+                    name="height"
+                    value={userInfo.height}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="weight">몸무게:</label>
+                  <input
+                    type="text"
+                    id="weight"
+                    name="weight"
+                    value={userInfo.weight}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="disease">질병:</label>
+                  <input
+                    type="text"
+                    id="disease"
+                    name="disease"
+                    value={userInfo.disease}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="emergencyContact">긴급 연락처:</label>
+                  <input
+                    type="text"
+                    id="emergencyContact"
+                    name="emergencyContact"
+                    value={userInfo.emergencyContact}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="profilePic">프로필 사진:</label>
+                  <input
+                    type="file"
+                    id="profilePic"
+                    name="profilePic"
+                    onChange={handleFileChange}
+                  />
+                </div>
+                <button type="submit" id="saveMed">
+                  저장하기
+                </button>
+              </form>
             </div>
           </div>
         </div>
