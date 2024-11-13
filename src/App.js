@@ -25,7 +25,9 @@ const AppContent = () => {
       {!isLoginPage && (
         <>
           <header className="topLogo">
-            <p>Healthcare Inc.(로고)</p>
+            <p>
+              <img id="logo" src="../uploads/websiteicon.png" alt="Logo" />
+            </p>
           </header>
           <div className="Bar">
             <Menubar />

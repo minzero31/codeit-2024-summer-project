@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const path = require("path");
 const app = express();
-const port = 3001;
+const port = 3000;
 
 const db = require("./lib/login_db");
 const sessionOption = require("./lib/sessionOption");

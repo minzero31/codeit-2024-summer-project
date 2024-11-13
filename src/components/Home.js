@@ -89,7 +89,6 @@ const Home = () => {
     setSelectedPills(
       Array.from(e.target.selectedOptions, (option) => option.value)
     );
-    selectedPills(selectedOption);
   };
 
   const openEditPopup = () => {
@@ -459,7 +458,7 @@ const Home = () => {
               <h2>복용 루틴 추가</h2>
               <form id="addPillForm" onSubmit={handleAddPillSubmit}>
                 <label>
-                  <select onChange={handlePillChange}>
+                  <select id="select_pill" onChange={handlePillChange}>
                     {pillOptions.map((pill) => (
                       <option key={pill.id} value={pill.name}>
                         {pill.name}
